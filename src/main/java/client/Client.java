@@ -41,14 +41,17 @@ import java.util.Scanner;
 
 public class Client {
 
-    private static final String host = "localhost";
-    private static final int portNumber = 8189;
+//    private static final String host = "2.132.21.81";
+//    private static final String host = "192.168.1.241";
+//    private static final int portNumber = 8189;
 
     private String userName;
     private String serverHost;
     private int serverPort;
     private String msg;
     private boolean hasMessages = false;
+
+    private ServerThread serverThread;
 
 //    public static void main(String[] args){
 //        String readName = null;
@@ -73,8 +76,7 @@ public class Client {
 
     public void sendMsg(String m)
     {
-        hasMessages = true;
-        msg = m;
+        serverThread.addNextMessage(m);
     }
 
     public void startClient(){
@@ -87,15 +89,18 @@ public class Client {
             // BufferedReader userBr = new BufferedReader(new InputStreamReader(userInStream));
             // Scanner userIn = new Scanner(userInStream);
 
-            ServerThread serverThread = new ServerThread(socket, userName);
+            serverThread = new ServerThread(socket, userName);
             Thread serverAccessThread = new Thread(serverThread);
             serverAccessThread.start();
-            while(serverAccessThread.isAlive()){
-                if(hasMessages){
-                    serverThread.addNextMessage(msg);
-                    hasMessages = false;
-                }
-            }
+
+//            SendThread sendThread = new SendThread(socket, userName);
+//            while(serverAccessThread.isAlive()){
+//                if(hasMessages){
+//                    serverThread.addNextMessage(msg);
+//                    hasMessages = false;
+//                }
+//            }
+
         }catch(IOException ex){
             System.err.println("Fatal Connection error!");
             ex.printStackTrace();

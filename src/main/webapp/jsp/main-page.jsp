@@ -166,6 +166,7 @@
 <%--                                </div>--%>
 <%--                            </li>--%>
 
+
                         </ul>
                     </div>
                     <div class="panel-footer">
@@ -203,28 +204,40 @@
             }
         });
 
+        var index = 0;
+
         setInterval(function (){
+
             $.ajax({
                 url: "http://localhost:8080/assignment2JAVA2_war_exploded/request",
                 type: 'GET',
                 success: function (data) {
-                    for(var i = 0; i < data.size(); i++)
+                    // $(".ccc").html("");
+                    if(index == data.length)
                     {
-                        $(".chat").append("<li class=\"right clearfix\"><span class=\"chat-img pull-right\">\n" +
-                            "                                                <img src=\"http://placehold.it/50/FA6F57/fff&text=BP\" alt=\"User Avatar\" class=\"img-circle\" />\n" +
-                            "                                            </span>\n" +
-                            "                                <div class=\"chat-body clearfix\">\n" +
-                            "                                    <div class=\"header\">\n" +
-                            "                                        <strong class=\"primary-font\">Username</strong>\n" +
-                            "                                    </div>\n" +
-                            "                                    <p>\n" + data[i] +
-                            "\n" +
-                            "                                    </p>\n" +
-                            "                                </div>\n" +
-                            "                            </li>")
+
+                    }
+                    else {
+                        for ( ; index < data.length; index++) {
+                            $(".chat").append("<li class=\"right clearfix\"><span class=\"chat-img pull-right\">\n" +
+                                "                                                <img src=\"http://placehold.it/50/FA6F57/fff&text=BP\" alt=\"User Avatar\" class=\"img-circle\" />\n" +
+                                "                                            </span>\n" +
+                                "                                <div class=\"chat-body clearfix\">\n" +
+                                "                                    <div class=\"header\">\n" +
+                                "                                        <strong class=\"primary-font\"></strong>\n" +
+                                "                                    </div>\n" +
+                                "                                    <p>\n" + data[index] +
+                                "\n" +
+                                "                                    </p>\n" +
+                                "                                </div>\n" +
+                                "                            </li>")
+                        }
+                        $(".panel-body").scrollTop($(".panel-body")[0].scrollHeight);
                     }
                 }
             });
+
+
 
         }, 2000);
 

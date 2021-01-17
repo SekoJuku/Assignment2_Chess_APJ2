@@ -19,17 +19,17 @@ import java.util.Scanner;
 @WebServlet(name = "ClientServlet", urlPatterns = "/request")
 public class ClientServlet extends HttpServlet {
     private static Client client;
-    private static final String host = "2.132.21.81";
+    private static final String host = "2.132.23.116";
     private static final int portNumber = 8189;
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        if(request.getParameter("username") == null)
+        if(request.getParameter("sendmsg") != null)
         {
             String m = request.getParameter("sendmsg");
             client.sendMsg(m);
 //            System.out.println(m);
         }
-        else
+        if(request.getParameter("username") != null)
         {
             String username = request.getParameter("username");
 
