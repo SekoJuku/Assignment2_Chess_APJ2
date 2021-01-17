@@ -58,9 +58,6 @@
                     <td id="h8" class="element dark" >&#9820;</td>
                 </tr>
                 <tr>
-                    Oracle
-                    Oracle Java Technologies | Oracle
-                    Java can help reduce costs, drive innovation, & improve application services; the #1 programming language for IoT, enterprise architecture, and cloud computing.
                     <th>7</th>
                     <td id="a7" class="element dark" > &#9823;</td>
                     <td id="b7" class="element light">&#9823;</td>
@@ -214,9 +211,12 @@
                 type: 'GET',
                 success: function (data) {
                     // $(".ccc").html("");
+
+
+
                     if(index == data.length)
                     {
-                        [Photo]
+
                     }
                     else {
                         for ( ; index < data.length; index++) {
@@ -236,7 +236,7 @@
                     }
                 }
             });
-
+            $(".panel-body").scrollIntoView();
         }, 2000);
 
         $("#btn-chat").on("click", function (){
