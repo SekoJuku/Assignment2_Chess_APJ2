@@ -20,6 +20,7 @@ public class ClientFilter implements Filter {
                 ((HttpServletRequest) req).getRequestDispatcher("index.jsp").forward(req, resp);
             }
         }
+        //asd
 
         chain.doFilter(req, resp);
     }
