@@ -207,7 +207,7 @@
         setInterval(function (){
 
             $.ajax({
-                url: "http://localhost:8080/assignment2JAVA2_war_exploded/request",
+                url: "http://2.132.23.116:8080/assignment2JAVA2_war_exploded/request",
                 type: 'GET',
                 success: function (data) {
                     // $(".ccc").html("");
@@ -236,7 +236,7 @@
                     }
                 }
             });
-            $(".panel-body").scrollIntoView();
+            $(".panel-body").scrollTop($(".panel-body")[0].scrollHeight);
         }, 2000);
 
         $("#btn-chat").on("click", function (){
@@ -244,7 +244,7 @@
 
             event.preventDefault();
             $.ajax({
-                url: "http://localhost:8080/assignment2JAVA2_war_exploded/request",
+                url: "http://2.132.23.116:8080/assignment2JAVA2_war_exploded/request",
                 type: 'POST',
                 data: m,
                 success: function (data) {
