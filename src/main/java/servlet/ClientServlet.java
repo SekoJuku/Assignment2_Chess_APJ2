@@ -1,6 +1,7 @@
 package servlet;
 
 import client.Client;
+import client.ServerThread;
 import com.google.gson.Gson;
 
 import javax.servlet.ServletException;
@@ -13,30 +14,40 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.Scanner;
 
 @WebServlet(name = "ClientServlet", urlPatterns = "/request")
 public class ClientServlet extends HttpServlet {
+    private static Client client;
     private static final String host = "2.132.21.81";
     private static final int portNumber = 8189;
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        if(request.getParameter("username") == null)
+        {
+            String m = request.getParameter("sendmsg");
+            client.sendMsg(m);
+//            System.out.println(m);
+        }
+        else
+        {
+            String username = request.getParameter("username");
+
+            client = new Client(username, host, portNumber);
+            client.startClient();
+
+            request.getRequestDispatcher("jsp/main-page.jsp").forward(request, response);
+        }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HashMap<String, String> list = new HashMap<>();
-        list.put("message", "empty");
-        String msg = request.getParameter("msg");
+//        request.setAttribute("chat", ServerThread.getMsgs());
 
-        Socket socket = new Socket(host, portNumber);
-
-        PrintWriter serverOut = new PrintWriter(socket.getOutputStream(), false);
-        serverOut.println("Player1" + " > " + msg);
-        serverOut.flush();
-
-        String json = new Gson().toJson(list);
+        String json = new Gson().toJson(ServerThread.getMsgs());
 
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
         response.getWriter().write(json);
+
     }
 }

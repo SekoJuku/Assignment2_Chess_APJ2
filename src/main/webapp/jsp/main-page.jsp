@@ -2,6 +2,10 @@
 <%@ page import="java.io.PrintWriter" %>
 <%@ page import="java.io.InputStream" %>
 <%@ page import="java.util.Scanner" %>
+<%@ page import="client.Client" %>
+<%@ page import="java.util.List" %>
+<%@ page import="client.ServerThread" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +22,7 @@
             font-size: 2.5em;
         }
     </style>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -148,35 +152,19 @@
                     </div>
                     <div class="panel-body">
                         <ul class="chat">
-                            <%
-                                Socket socket = new Socket("2.132.21.81", 8189);
-                                Thread.sleep(1000); // waiting for network communicating.
-                                PrintWriter serverOut = new PrintWriter(socket.getOutputStream(), false);
-                                InputStream serverInStream = socket.getInputStream();
-                                Scanner serverIn = new Scanner(serverInStream);
-                                while(!socket.isClosed())
-                                {
-                                    if(serverInStream.available() > 0){
-                                        if(serverIn.hasNextLine()){
-                            %>
 
-                            <li class="right clearfix"><span class="chat-img pull-right">
-                                                <img src="http://placehold.it/50/FA6F57/fff&text=BP" alt="User Avatar" class="img-circle" />
-                                            </span>
-                                <div class="chat-body clearfix">
-                                    <div class="header">
-                                        <strong class="primary-font">Username</strong>
-                                    </div>
-                                    <p>
-                                        <% out.println(serverIn.nextLine()); %>
-                                    </p>
-                                </div>
-                            </li>
-                            <%
-                                        }
-                                    }
-                                }
-                            %>
+<%--                            <li class="right clearfix"><span class="chat-img pull-right">--%>
+<%--                                                <img src="http://placehold.it/50/FA6F57/fff&text=BP" alt="User Avatar" class="img-circle" />--%>
+<%--                                            </span>--%>
+<%--                                <div class="chat-body clearfix">--%>
+<%--                                    <div class="header">--%>
+<%--                                        <strong class="primary-font">Username</strong>--%>
+<%--                                    </div>--%>
+<%--                                    <p>--%>
+
+<%--                                    </p>--%>
+<%--                                </div>--%>
+<%--                            </li>--%>
 
                         </ul>
                     </div>
@@ -215,19 +203,45 @@
             }
         });
 
+        setInterval(function (){
+            $.ajax({
+                url: "http://localhost:8080/assignment2JAVA2_war_exploded/request",
+                type: 'GET',
+                success: function (data) {
+                    for(var i = 0; i < data.size(); i++)
+                    {
+                        $(".chat").append("<li class=\"right clearfix\"><span class=\"chat-img pull-right\">\n" +
+                            "                                                <img src=\"http://placehold.it/50/FA6F57/fff&text=BP\" alt=\"User Avatar\" class=\"img-circle\" />\n" +
+                            "                                            </span>\n" +
+                            "                                <div class=\"chat-body clearfix\">\n" +
+                            "                                    <div class=\"header\">\n" +
+                            "                                        <strong class=\"primary-font\">Username</strong>\n" +
+                            "                                    </div>\n" +
+                            "                                    <p>\n" + data[i] +
+                            "\n" +
+                            "                                    </p>\n" +
+                            "                                </div>\n" +
+                            "                            </li>")
+                    }
+                }
+            });
+
+        }, 2000);
+
         $("#btn-chat").on("click", function (){
+            var m = "sendmsg=" + $(".msgg").val();
 
             event.preventDefault();
             $.ajax({
-                url: "http://localhost:8080/assignment2JAVA2_war_exploded/request?&msg=" + $(".msgg").val(),
-                type: 'GET',
+                url: "http://localhost:8080/assignment2JAVA2_war_exploded/request",
+                type: 'POST',
+                data: m,
                 success: function (data) {
-
+                    $(".msgg").val("");
                 }
             });
 
             $(".msgg").val("");
-
         });
 
         $(".element").on("click", function(){

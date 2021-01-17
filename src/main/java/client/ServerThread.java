@@ -2,10 +2,10 @@ package client;
 
 import java.io.*;
 import java.net.Socket;
-import java.util.LinkedList;
-import java.util.Scanner;
+import java.util.*;
 
 public class ServerThread implements Runnable {
+    private static List<String> msgs = new ArrayList<>();
     private Socket socket;
     private String userName;
     private boolean isAlived;
@@ -25,6 +25,11 @@ public class ServerThread implements Runnable {
         }
     }
 
+    public static ArrayList<String> getMsgs()
+    {
+        return (ArrayList<String>) msgs;
+    }
+
     @Override
     public void run(){
         System.out.println("Welcome :" + userName);
@@ -41,7 +46,10 @@ public class ServerThread implements Runnable {
             while(!socket.isClosed()){
                 if(serverInStream.available() > 0){
                     if(serverIn.hasNextLine()){
-                        System.out.println(serverIn.nextLine());
+                        String l = serverIn.nextLine();
+                        msgs.add(l);
+                        System.out.println(l);
+                        System.out.println("all messages");
                     }
                 }
                 if(hasMessages){
@@ -50,7 +58,9 @@ public class ServerThread implements Runnable {
                         nextSend = messagesToSend.pop();
                         hasMessages = !messagesToSend.isEmpty();
                     }
-                    serverOut.println(userName + " > " + nextSend);
+                    String m = userName + " > " + nextSend;
+                    serverOut.println(m);
+                    System.out.println(m + "Hello");
                     serverOut.flush();
                 }
             }
