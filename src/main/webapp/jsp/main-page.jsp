@@ -44,93 +44,92 @@
                 <tr><th></th><th>a</th><th>b</th><th>c</th><th>d</th><th>e</th><th>f</th><th>g</th><th>h</th></tr>
                 <tr>
                     <th>8</th>
-                    <td class="light">&#9820;</td>
-                    <td class="dark">&#9822;</td>
-                    <td class="light">&#9821;</td>
-                    <td class="dark">&#9819;</td>
-                    <td class="light">&#9818;</td>
-                    <td class="dark">&#9821;</td>
-                    <td class="light">&#9822;</td>
-                    <td class="dark">&#9820;</td>
-
+                    <td id="a8" class="element light">&#9820;</td>
+                    <td id="b8" class="element dark" >&#9822;</td>
+                    <td id="c8" class="element light" >&#9821;</td>
+                    <td id="d8" class="element dark" >&#9819;</td>
+                    <td id="e8" class="element light">&#9818;</td>
+                    <td id="f8" class="element dark" >&#9821;</td>
+                    <td id="g8" class="element light">&#9822;</td>
+                    <td id="h8" class="element dark" >&#9820;</td>
                 </tr>
                 <tr>
 
                     <th>7</th>
-                    <td class="dark"> &#9823;</td>
-                    <td class="light">&#9823;</td>
-                    <td class="dark"> &#9823;</td>
-                    <td class="light">&#9823;</td>
-                    <td class="dark"> &#9823;</td>
-                    <td class="light">&#9823;</td>
-                    <td class="dark"> &#9823;</td>
-                    <td class="light">&#9823;</td>
+                    <td id="a7" class="element dark" > &#9823;</td>
+                    <td id="b7" class="element light">&#9823;</td>
+                    <td id="c7" class="element dark" > &#9823;</td>
+                    <td id="d7" class="element light">&#9823;</td>
+                    <td id="e7" class="element dark" > &#9823;</td>
+                    <td id="f7" class="element light">&#9823;</td>
+                    <td id="g7" class="element dark" > &#9823;</td>
+                    <td id="h7" class="element light">&#9823;</td>
                 </tr>
                 <tr>
                     <th>6</th>
-                    <td class="light"></td>
-                    <td class="dark"></td>
-                    <td class="light"></td>
-                    <td class="dark"></td>
-                    <td class="light"></td>
-                    <td class="dark"></td>
-                    <td class="light"></td>
-                    <td class="dark"></td>
+                    <td id="a6" class="element light"></td>
+                    <td id="b6" class="element dark" ></td>
+                    <td id="c6" class="element light"></td>
+                    <td id="d6" class="element dark" ></td>
+                    <td id="e6" class="element light"></td>
+                    <td id="f6" class="element dark" ></td>
+                    <td id="g6" class="element light"></td>
+                    <td id="h6" class="element dark" ></td>
                 </tr>
                 <tr>
                     <th>5</th>
-                    <td class="dark"></td>
-                    <td class="light"></td>
-                    <td class="dark"></td>
-                    <td class="light"></td>
-                    <td class="dark"></td>
-                    <td class="light"></td>
-                    <td class="dark"></td>
-                    <td class="light"></td>
+                    <td id="a5" class="element dark" ></td>
+                    <td id="b5" class="element light"></td>
+                    <td id="c5" class="element dark" ></td>
+                    <td id="d5" class="element light"></td>
+                    <td id="e5" class="element dark" ></td>
+                    <td id="f5" class="element light"></td>
+                    <td id="g5" class="element dark" ></td>
+                    <td id="h5" class="element light"></td>
                 </tr>
                 <tr>
                     <th>4</th>
-                    <td class="light"></td>
-                    <td class="dark"></td>
-                    <td class="light"></td>
-                    <td class="dark"></td>
-                    <td class="light"></td>
-                    <td class="dark"></td>
-                    <td class="light"></td>
-                    <td class="dark"></td>
+                    <td id="a4" class="element light"></td>
+                    <td id="b4" class="element dark" ></td>
+                    <td id="c4" class="element light"></td>
+                    <td id="d4" class="element dark" ></td>
+                    <td id="e4" class="element light"></td>
+                    <td id="f4" class="element dark" ></td>
+                    <td id="g4" class="element light"></td>
+                    <td id="h4" class="element dark" ></td>
                 </tr>
                 <tr>
                     <th>3</th>
-                    <td class="dark"></td>
-                    <td class="light"></td>
-                    <td class="dark"></td>
-                    <td class="light"></td>
-                    <td class="dark"></td>
-                    <td class="light"></td>
-                    <td class="dark"></td>
-                    <td class="light"></td>
+                    <td id="a3" class="element dark" ></td>
+                    <td id="b3" class="element light"></td>
+                    <td id="c3" class="element dark" ></td>
+                    <td id="d3" class="element light"></td>
+                    <td id="e3" class="element dark" ></td>
+                    <td id="f3" class="element light"></td>
+                    <td id="g3" class="element dark" ></td>
+                    <td id="h3" class="element light"></td>
                 </tr>
                 <tr>
                     <th>2</th>
-                    <td class="light">&#9817;</td>
-                    <td class="dark"> &#9817;</td>
-                    <td class="light">&#9817;</td>
-                    <td class="dark"> &#9817;</td>
-                    <td class="light">&#9817;</td>
-                    <td class="dark"> &#9817;</td>
-                    <td class="light">&#9817;</td>
-                    <td class="dark"> &#9817;</td>
+                    <td id="a2" class="element light">&#9817;</td>
+                    <td id="b2" class="element dark" > &#9817;</td>
+                    <td id="c2" class="element light">&#9817;</td>
+                    <td id="d2" class="element dark" > &#9817;</td>
+                    <td id="e2" class="element light">&#9817;</td>
+                    <td id="f2" class="element dark" > &#9817;</td>
+                    <td id="g2" class="element light">&#9817;</td>
+                    <td id="h2" class="element dark" > &#9817;</td>
                 </tr>
                 <tr>
                     <th>1</th>
-                    <td class="dark"> &#9814;</td>
-                    <td class="light">&#9816;</td>
-                    <td class="dark"> &#9815;</td>
-                    <td class="light">&#9813;</td>
-                    <td class="dark"> &#9812;</td>
-                    <td class="light">&#9815;</td>
-                    <td class="dark"> &#9816;</td>
-                    <td class="light">&#9814;</td>
+                    <td id="a1" class="element dark" > &#9814;</td>
+                    <td id="b1" class="element light">&#9816;</td>
+                    <td id="c1" class="element dark" > &#9815;</td>
+                    <td id="d1" class="element light">&#9813;</td>
+                    <td id="e1" class="element dark" > &#9812;</td>
+                    <td id="f1" class="element light">&#9815;</td>
+                    <td id="g1" class="element dark" > &#9816;</td>
+                    <td id="h1" class="element light">&#9814;</td>
                 </tr>
                 </tbody>
             </table>
@@ -230,6 +229,35 @@
             $(".msgg").val("");
 
         });
+
+        $(".element").on("click", function(){
+
+            var i = $(this).attr("id");
+            var e = $(this).html();
+
+            if(e != "")
+            {
+                if(current != "")
+                {
+
+                    document.getElementById(i).textContent = current;
+                    current = "";
+                }
+                else
+                {
+                    current = e;
+                    document.getElementById(i).textContent = "";
+                }
+            }
+            else
+            {
+                document.getElementById(i).textContent = current;
+                current = "";
+            }
+
+        });
+
+        var current = "";
 
     });
 </script>
