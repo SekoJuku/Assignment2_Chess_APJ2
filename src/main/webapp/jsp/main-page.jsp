@@ -58,7 +58,9 @@
                     <td id="h8" class="element dark" >&#9820;</td>
                 </tr>
                 <tr>
-
+                    Oracle
+                    Oracle Java Technologies | Oracle
+                    Java can help reduce costs, drive innovation, & improve application services; the #1 programming language for IoT, enterprise architecture, and cloud computing.
                     <th>7</th>
                     <td id="a7" class="element dark" > &#9823;</td>
                     <td id="b7" class="element light">&#9823;</td>
@@ -137,7 +139,6 @@
                 </tr>
                 </tbody>
             </table>
-
             <div class="col-md-2">
 
             </div>
@@ -153,18 +154,19 @@
                     <div class="panel-body">
                         <ul class="chat">
 
-<%--                            <li class="right clearfix"><span class="chat-img pull-right">--%>
-<%--                                                <img src="http://placehold.it/50/FA6F57/fff&text=BP" alt="User Avatar" class="img-circle" />--%>
-<%--                                            </span>--%>
-<%--                                <div class="chat-body clearfix">--%>
-<%--                                    <div class="header">--%>
-<%--                                        <strong class="primary-font">Username</strong>--%>
-<%--                                    </div>--%>
-<%--                                    <p>--%>
+                            <%--                            <li class="right clearfix"><span class="chat-img pull-right">--%>
+                            <%--                                                <img src="http://placehold.it/50/FA6F57/fff&text=BP" alt="User Avatar" class="img-circle" />--%>
+                            <%--                                            </span>--%>
+                            <%--                                <div class="chat-body clearfix">--%>
+                            <%--                                    <div class="header">--%>
+                            <%--                                        <strong class="primary-font">Username</strong>--%>
+                            <%--                                    </div>--%>
+                            <%--                                    <p>--%>
 
-<%--                                    </p>--%>
-<%--                                </div>--%>
-<%--                            </li>--%>
+                            <%--                                    </p>--%>
+                            <%--                                </div>--%>
+                            <%--                            </li>--%>
+
 
                         </ul>
                     </div>
@@ -203,25 +205,34 @@
             }
         });
 
+        var index = 0;
+
         setInterval(function (){
+
             $.ajax({
                 url: "http://localhost:8080/assignment2JAVA2_war_exploded/request",
                 type: 'GET',
                 success: function (data) {
-                    for(var i = 0; i < data.size(); i++)
+                    // $(".ccc").html("");
+                    if(index == data.length)
                     {
-                        $(".chat").append("<li class=\"right clearfix\"><span class=\"chat-img pull-right\">\n" +
-                            "                                                <img src=\"http://placehold.it/50/FA6F57/fff&text=BP\" alt=\"User Avatar\" class=\"img-circle\" />\n" +
-                            "                                            </span>\n" +
-                            "                                <div class=\"chat-body clearfix\">\n" +
-                            "                                    <div class=\"header\">\n" +
-                            "                                        <strong class=\"primary-font\">Username</strong>\n" +
-                            "                                    </div>\n" +
-                            "                                    <p>\n" + data[i] +
-                            "\n" +
-                            "                                    </p>\n" +
-                            "                                </div>\n" +
-                            "                            </li>")
+                        [Photo]
+                    }
+                    else {
+                        for ( ; index < data.length; index++) {
+                            $(".chat").append("<li class=\"right clearfix\"><span class=\"chat-img pull-right\">\n" +
+                                "                                                <img src=\"http://placehold.it/50/FA6F57/fff&text=BP\" alt=\"User Avatar\" class=\"img-circle\" />\n" +
+                                "                                            </span>\n" +
+                                "                                <div class=\"chat-body clearfix\">\n" +
+                                "                                    <div class=\"header\">\n" +
+                                "                                        <strong class=\"primary-font\"></strong>\n" +
+                                "                                    </div>\n" +
+                                "                                    <p>\n" + data[index] +
+                                "\n" +
+                                "                                    </p>\n" +
+                                "                                </div>\n" +
+                                "                            </li>")
+                        }
                     }
                 }
             });

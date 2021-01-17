@@ -8,7 +8,6 @@ public class ServerThread implements Runnable {
     private static List<String> msgs = new ArrayList<>();
     private Socket socket;
     private String userName;
-    private boolean isAlived;
     private final LinkedList<String> messagesToSend;
     private boolean hasMessages = false;
 
@@ -48,8 +47,8 @@ public class ServerThread implements Runnable {
                     if(serverIn.hasNextLine()){
                         String l = serverIn.nextLine();
                         msgs.add(l);
-                        System.out.println(l);
-                        System.out.println("all messages");
+//                        System.out.println(l);
+//                        System.out.println("all messages");
                     }
                 }
                 if(hasMessages){
