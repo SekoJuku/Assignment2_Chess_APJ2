@@ -33,7 +33,10 @@ package client;
 //}
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Client {
@@ -45,6 +48,8 @@ public class Client {
     private String serverHost;
     private int serverPort;
     private Scanner userInputScanner;
+    private final LinkedList<String> messagesToSend;
+    private boolean hasMessages = false;
 
     public static void main(String[] args){
         String readName = null;
@@ -61,25 +66,54 @@ public class Client {
         client.startClient(scan);
     }
 
-    private Client(String userName, String host, int portNumber){
+    public Client(String userName, String host, int portNumber){
         this.userName = userName;
         this.serverHost = host;
         this.serverPort = portNumber;
+        messagesToSend = new LinkedList<String>();
+    }
+
+    public void addNextMessage(String message){
+        synchronized (messagesToSend){
+            hasMessages = true;
+            messagesToSend.push(message);
+        }
     }
 
     private void startClient(Scanner scan){
         try{
             Socket socket = new Socket(serverHost, serverPort);
             Thread.sleep(1000); // waiting for network communicating.
+            PrintWriter serverOut = new PrintWriter(socket.getOutputStream(), false);
+            InputStream serverInStream = socket.getInputStream();
+            Scanner serverIn = new Scanner(serverInStream);
+            // BufferedReader userBr = new BufferedReader(new InputStreamReader(userInStream));
+            // Scanner userIn = new Scanner(userInStream);
 
-            ServerThread serverThread = new ServerThread(socket, userName);
-            Thread serverAccessThread = new Thread(serverThread);
-            serverAccessThread.start();
-            while(serverAccessThread.isAlive()){
-                if(scan.hasNextLine()){
-                    serverThread.addNextMessage(scan.nextLine());
+            while(!socket.isClosed()){
+                if(serverInStream.available() > 0){
+                    if(serverIn.hasNextLine()){
+                        System.out.println(serverIn.nextLine());
+                    }
+                }
+                if(hasMessages){
+                    String nextSend = "";
+                    synchronized(messagesToSend){
+                        nextSend = messagesToSend.pop();
+                        hasMessages = !messagesToSend.isEmpty();
+                    }
+                    serverOut.println(userName + " > " + nextSend);
+                    serverOut.flush();
                 }
             }
+//            ServerThread serverThread = new ServerThread(socket, userName);
+//            Thread serverAccessThread = new Thread(serverThread);
+//            serverAccessThread.start();
+//            while(serverAccessThread.isAlive()){
+//                if(scan.hasNextLine()){
+//                    serverThread.addNextMessage(scan.nextLine());
+//                }
+//            }
         }catch(IOException ex){
             System.err.println("Fatal Connection error!");
             ex.printStackTrace();
