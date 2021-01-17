@@ -40,6 +40,7 @@ public class ClientThread implements Runnable {
             }
         } catch (IOException e) {
             e.printStackTrace();
+
         }
     }
 }
